@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(0, 0, 0, 1) 29%,
+    rgba(0, 89, 107, 1) 100%
+  );
+}
+.alert {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  background-color: rgb(145, 0, 0);
+  border: none;
+  color: white;
+}
+.container {
+  > div {
+    background-color: transparent;
+    max-width: 450px;
+    max-height: 500px;
+    perspective: 1000px;
+    > .row {
+      padding: 0;
+      margin: 0;
+      position: relative;
+      max-width: 450px;
+      min-width: 450px;
+      min-height: 250px;
+      max-height: 250px;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border: 2px solid #ffffff6b;
+      border-radius: 20px;
+      background-color: transparent;
+      box-shadow: 0px 2px 38px -3px rgba(255, 255, 255, 0.48);
+      -webkit-box-shadow: 0px 2px 38px -3px rgba(255, 255, 255, 0.48);
+      -moz-box-shadow: 0px 2px 38px -3px rgba(255, 255, 255, 0.48);
+      @media only screen and (max-width: 580px) and (min-width: 500px) {
+        min-width: 400px;
+      }
+      @media only screen and (max-width: 499px) and (min-width: 440px) {
+        min-width: 350px;
+      }
+      @media only screen and (max-width: 439px) and (min-width: 370px) {
+        min-width: 300px;
+        min-height: 280px;
+      }
+      @media only screen and (max-width: 370px) and (min-width: 0px) {
+        min-width: 260px;
+        min-height: 280px;
+      }
+      > .form_div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      > .success_div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+        > div {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          > h4 {
+            color: green;
+          }
+        }
+      }
+      > div {
+        > form {
+          > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > h2 {
+              color: white;
+            }
+            > #rateYo {
+              margin: 10px 0;
+            }
+
+            #getRating {
+              margin-top: 20px;
+              width: 9em;
+              height: 3em;
+              color: #fff;
+              border-radius: 30em;
+              font-size: 15px;
+              font-family: inherit;
+              border: none;
+              position: relative;
+              overflow: hidden;
+              z-index: 1;
+              background-color: transparent;
+              box-shadow: 0px 2px 12px -3px rgba(255, 255, 255, 0.48);
+              -webkit-box-shadow: 0px 2px 12px -3px rgba(255, 255, 255, 0.48);
+              -moz-box-shadow: 0px 2px 12px -3px rgba(255, 255, 255, 0.48);
+              &::before {
+                content: "";
+                width: 0;
+                height: 3em;
+                border-radius: 30em;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(
+                  to right,
+                  #000000 0%,
+                  #00596b 100%
+                );
+                transition: 0.5s ease;
+                display: block;
+                z-index: -1;
+              }
+              &:hover {
+                &::before {
+                  width: 9em;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
