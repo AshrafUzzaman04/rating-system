@@ -1,3 +1,13 @@
+const docTitle = document.title;
+
+window.addEventListener("blur", () => {
+  document.title = "Submit Review :)";
+});
+
+window.addEventListener("focus", () => {
+  document.title = docTitle;
+});
+
 $(function () {
   // rating plugin
   var $rateYo = $("#rateYo").rateYo({

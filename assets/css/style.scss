@@ -21,7 +21,8 @@ body {
   color: white;
 }
 .container {
-  > div {
+  position: relative;
+  > main {
     background-color: transparent;
     max-width: 450px;
     max-height: 500px;
@@ -82,6 +83,7 @@ body {
           gap: 20px;
           > h4 {
             color: green;
+            text-align: center;
           }
         }
       }
@@ -138,6 +140,63 @@ body {
               }
             }
           }
+        }
+      }
+    }
+  }
+  > footer {
+    position: absolute;
+    bottom: 2%;
+    > div {
+      min-width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      gap: 8px;
+      background: rgb(0 0 0 / 25%);
+      backdrop-filter: blur(10px);
+      padding: 6px 12px;
+      border: 1px solid #ffffff42;
+      border-radius: 20px;
+      > h4 {
+        color: #00596b;
+        margin-bottom: 0;
+      }
+      > .tooltiptext {
+        text-transform: capitalize;
+        visibility: hidden;
+        width: 200px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s, visibility 0.3s;
+        &::before {
+          content: "";
+          left: 50%;
+          position: absolute;
+          transform: translateX(10px);
+          display: block;
+          bottom: -12px;
+          width: 20px;
+          height: 20px;
+          background-color: #000;
+          z-index: -1;
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+      }
+      &:hover {
+        > .tooltiptext {
+          visibility: visible;
+          opacity: 1;
         }
       }
     }

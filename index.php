@@ -1,3 +1,7 @@
+<?php
+include_once("./conn.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +12,7 @@
     <link rel="icon" href="./assets/img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/style.min.css?<?php echo time() ?>">
 </head>
 
@@ -16,7 +21,7 @@
         <span id="error_msg"></span>
     </div>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh">
-        <div>
+        <main>
             <div class="row flip">
                 <div class="m-auto p-5 form_div">
                     <form method="POST" id="ratingForm">
@@ -39,7 +44,25 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
+        <?php
+        $selctAll = $conn->query("SELECT * FROM `ratings`");
+        $avgQuery = "SELECT AVG(value) AS avg_value FROM ratings";
+        $result = mysqli_query($conn, $avgQuery);
+        $row = mysqli_fetch_object($result);
+        $avgValue = $row->avg_value;
+        if ($selctAll->num_rows > 0) {
+        ?>
+            <footer>
+                <div>
+                    <i class="fa-solid fa-star" style="color: #00596b;"></i>
+                    <h4><?= round($avgValue, 1) ?? null ?></h4>
+                    <span class="tooltiptext">Total Average Ratings!</span>
+                </div>
+            </footer>
+        <?php
+        }
+        ?>
     </div>
 </body>
 
