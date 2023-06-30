@@ -56,7 +56,7 @@ include_once("./conn.php");
         ?>
             <footer>
                 <div>
-                    <div class="mx-auto jq-ry-container" style="width: max-content;">
+                    <div class="mx-0 jq-ry-container" style="width: max-content;">
                         <div class="jq-ry-group-wrapper">
                             <div class="jq-ry-normal-group jq-ry-group">
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="20px" height="32px" fill="gray">
