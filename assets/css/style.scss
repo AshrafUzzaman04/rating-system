@@ -24,6 +24,8 @@ body {
   position: relative;
   > main {
     background-color: transparent;
+    max-width: 450px;
+    max-height: 500px;
     perspective: 1000px;
     > .row {
       padding: 0;
