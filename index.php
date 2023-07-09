@@ -29,6 +29,9 @@ include_once("./conn.php");
                             <h2 class="text-center">Give us your rating.</h2>
                         </div>
                         <div class="col-12">
+                            <input type="email" id="user_email" placeholder="Your Email">
+                        </div>
+                        <div class="col-12">
                             <div id="rateYo" class="mx-auto"></div>
                             <input type="hidden" name="rating" id="rateValue">
                         </div>
@@ -47,6 +50,10 @@ include_once("./conn.php");
         </main>
         <?php
         $selctAll = $conn->query("SELECT * FROM `ratings`");
+        $countRowsQuery = $conn->query("SELECT COUNT(*) AS row_count FROM ratings;
+        ");
+        $fetch = $countRowsQuery->fetch_assoc();
+        $countRows = $fetch['row_count'];
         $avgQuery = "SELECT AVG(value) AS avg_value FROM ratings";
         $result = mysqli_query($conn, $avgQuery);
         $row = mysqli_fetch_object($result);
@@ -95,6 +102,7 @@ include_once("./conn.php");
                         </div>
                     </div>
                     <h4><?= round($avgValue, 1) ?? null ?></h4>
+                    <span class="text-warning">(<?= $countRows  ?? null ?>)</span>
 
                     <span class="tooltiptext">Total Average Ratings!</span>
                 </div>

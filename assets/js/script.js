@@ -25,12 +25,15 @@ $(function () {
     $("#rateValue").val(rating);
 
     var rateval = $("#rateValue").val();
+    var review_email = $("#user_email").val();
+
     // AJAX POST request
     $.ajax({
       type: "POST",
       url: "rating.php",
       data: {
         ratevalue: rateval,
+        review_email: review_email,
         rating: "done",
       },
       success: function (data) {
@@ -39,7 +42,11 @@ $(function () {
         var error = data.error;
         var msg = data.error_message;
 
-        if (error === 1) {
+        if (error === 5) {
+          $(".alert").removeClass("d-none");
+          $(".alert").addClass("d-block");
+          $("#error_msg").html(msg);
+        } else if (error === 1) {
           $(".alert").removeClass("d-none");
           $(".alert").addClass("d-block");
           $("#error_msg").html(msg);

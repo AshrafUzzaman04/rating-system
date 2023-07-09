@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2023 at 12:06 AM
+-- Generation Time: Jul 09, 2023 at 03:31 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ratings` (
   `id` int(255) NOT NULL,
+  `gmail` char(255) DEFAULT NULL,
   `value` float NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -37,8 +38,11 @@ CREATE TABLE `ratings` (
 -- Dumping data for table `ratings`
 --
 
-INSERT INTO `ratings` (`id`, `value`, `created_at`) VALUES
-(38, 2.6, '2023-06-29 22:00:04');
+INSERT INTO `ratings` (`id`, `gmail`, `value`, `created_at`) VALUES
+(49, NULL, 2.5, '2023-06-30 09:47:35'),
+(50, NULL, 4.9, '2023-07-09 12:29:27'),
+(51, NULL, 2.5, '2023-07-09 12:29:35'),
+(52, 'ashraf@gmail.com', 5, '2023-07-09 13:05:25');
 
 --
 -- Indexes for dumped tables
@@ -58,7 +62,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

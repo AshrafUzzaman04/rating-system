@@ -24,8 +24,6 @@ body {
   position: relative;
   > main {
     background-color: transparent;
-    max-width: 450px;
-    max-height: 500px;
     perspective: 1000px;
     > .row {
       padding: 0;
@@ -33,8 +31,8 @@ body {
       position: relative;
       max-width: 450px;
       min-width: 450px;
-      min-height: 250px;
-      max-height: 250px;
+      min-height: 320px;
+      max-height: 320px;
       transition: transform 0.6s;
       transform-style: preserve-3d;
       border: 2px solid #ffffff6b;
@@ -51,11 +49,11 @@ body {
       }
       @media only screen and (max-width: 439px) and (min-width: 370px) {
         min-width: 300px;
-        min-height: 280px;
+        min-height: 340px;
       }
       @media only screen and (max-width: 370px) and (min-width: 0px) {
         min-width: 260px;
-        min-height: 280px;
+        min-height: 340px;
       }
       > .form_div {
         position: absolute;
@@ -100,6 +98,27 @@ body {
               margin: 10px 0;
             }
 
+            > #user_email {
+              margin: 10px 0;
+              padding: 10px 10px 10px 20px;
+              border: none;
+              min-width: 250px;
+              background-color: transparent;
+              color: whitesmoke;
+              border-radius: 30px;
+              box-shadow: 0px 2px 12px -3px rgba(255, 255, 255, 0.48);
+              caret-color: #00596b;
+              &:focus {
+                border: none;
+                outline: none;
+              }
+            }
+
+            @media only screen and (max-width: 370px) and (min-width: 0px) {
+              > #user_email {
+                min-width: 200px;
+              }
+            }
             #getRating {
               margin-top: 20px;
               width: 9em;

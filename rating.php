@@ -3,8 +3,27 @@ include_once("./conn.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['rating']) == "done") {
     $ratevalue = mysqli_real_escape_string($conn, $_POST['ratevalue']);
+    $review_email = mysqli_real_escape_string($conn, $_POST['review_email']);
 
-    if ($ratevalue <= 0) {
+    if (empty($review_email)) {
+        $res = array(
+            "error" => 5,
+            "error_message" => "Please write your email!"
+        );
+        exit(json_encode($res));
+    } elseif (!filter_var($review_email, FILTER_VALIDATE_EMAIL)) {
+        $res = array(
+            "error" => 5,
+            "error_message" => "Invalid email address!"
+        );
+        exit(json_encode($res));
+    } elseif (substr($review_email, -10) !== "@gmail.com") {
+        $res = array(
+            "error" => 5,
+            "error_message" => "Please write your gmail address!"
+        );
+        exit(json_encode($res));
+    } elseif ($ratevalue <= 0) {
         $res = array(
             "error" => 1,
             "error_message" => "Please select your ratings!"
@@ -17,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['rating']) == "done") {
         );
         exit(json_encode($res));
     } else {
-        $insertRating = $conn->query("INSERT INTO `ratings` (`value`) VALUES ($ratevalue)");
+        $insertRating = $conn->query("INSERT INTO `ratings` (`value`,`gmail`) VALUES ($ratevalue , '$review_email')");
 
         if (!$insertRating) {
             $res = array(
